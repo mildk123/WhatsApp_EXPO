@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Picker } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { Text, Button } from "react-native-elements";
+import { Dropdown } from "react-native-material-dropdown";
+import { TextField } from "react-native-material-textfield";
 
 class verifyPhone extends Component {
   static navigationOptions = {
@@ -9,6 +11,89 @@ class verifyPhone extends Component {
   };
 
   render() {
+    let data = [
+      {
+        value: "Banana"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "123123"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      },
+      {
+        value: "Mango"
+      },
+      {
+        value: "Pear"
+      }
+    ];
     return (
       <View style={styles.container}>
         <View style={{ padding: 40 }}>
@@ -17,24 +102,26 @@ class verifyPhone extends Component {
           </Text>
         </View>
 
-        <View style={{ alignContent: "center", justifyContent: "center" }}>
-          <Text style={styles.textContainer}>
-            WhatsApp will send an SMS message (carrier charges may apply) to
-            verify your phone number. Enter your country code and phone number:
-          </Text>
+        <Text style={styles.textContainer}>
+          WhatsApp will send an SMS message (carrier charges may apply) to
+          verify your phone number. Enter your country code and phone number:
+        </Text>
 
-          <View>
-            <Picker
-              style={{ height: 50, width: 100 }}
-              onValueChange={(itemValue, itemIndex) =>
-                this.setState({ language: itemValue })
-              }
-            >
-              <Picker.Item label="Java" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-            </Picker>
-          </View>
+        <View style={{ alignContent: "center", width: "60%" }}>
+          <Dropdown itemCount={35} data={data} />
         </View>
+
+
+          <View style={{ width: "60%" }}>          
+            <TextField 
+            prefix='+92'
+            style={{width: 700}} 
+            fontSize={20}
+            inputContainerPadding={12} 
+            tintColor='#25D366' 
+            label="Phone number" />
+          </View>
+
       </View>
     );
   }
