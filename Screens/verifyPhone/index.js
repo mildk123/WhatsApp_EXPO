@@ -94,6 +94,7 @@ class verifyPhone extends Component {
         value: "Pear"
       }
     ];
+
     return (
       <View style={styles.container}>
         <View style={{ padding: 40 }}>
@@ -109,18 +110,26 @@ class verifyPhone extends Component {
 
         <View style={{ alignContent: "center", width: "60%" }}>
           <Dropdown itemCount={35} data={data} />
+          <TextField
+            prefix="+92"
+            style={{ width: 700 }}
+            fontSize={20}
+            inputContainerPadding={12}
+            tintColor="#25D366"
+            label="Phone number"
+            onChangeText={phone => this.setState({ phone })}
+          />
         </View>
 
-
-          <View style={{ width: "60%" }}>          
-            <TextField 
-            prefix='+92'
-            style={{width: 700}} 
-            fontSize={20}
-            inputContainerPadding={12} 
-            tintColor='#25D366' 
-            label="Phone number" />
-          </View>
+        <View style={{position: 'absolute', bottom: 55}}>
+          <Button 
+          large
+          title="Next" 
+          backgroundColor="#25D366" 
+          containerViewStyle={{width: 100}}
+          borderRadius={2} 
+          />
+        </View>
 
       </View>
     );
