@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Text, Button } from "react-native-elements";
-import { Dropdown } from "react-native-material-dropdown";
 import { TextField } from "react-native-material-textfield";
 
 class verifyPhone extends Component {
@@ -109,7 +108,8 @@ class verifyPhone extends Component {
         </Text>
 
         <View style={{ alignContent: "center", width: "60%" }}>
-          <Dropdown itemCount={35} data={data} />
+          {/* <Dropdown itemCount={4} data={data} /> */}
+
           <TextField
             prefix="+92"
             style={{ width: 700 }}
