@@ -1,99 +1,53 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
+import firebase from "../../Config/Firebase";
 
 import { Text, Button } from "react-native-elements";
 import { TextField } from "react-native-material-textfield";
 
 class verifyPhone extends Component {
+  constructor() {
+    super();
+    this.state = {
+      phone: null
+    };
+  }
+
   static navigationOptions = {
     header: null
   };
 
-  render() {
-    let data = [
+  _verifyPhone = () => {
+    firebase.auth.RecaptchaVerifier(
+      "sign-in-button",
       {
-        value: "Banana"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "123123"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
-      },
-      {
-        value: "Mango"
-      },
-      {
-        value: "Pear"
+        size: "invisible",
+        callback: function(response) {
+          console.log(response)
+        }
       }
-    ];
+    );
 
+    // if (this.state.phone.length !== 10) {
+    //   alert("Invalid Number");
+    // } else {
+    //   firebase.auth().onAuthStateChanged(user => {
+    //     if ( user ){
+    //       console.log(user.uid)
+    //     }else{
+    //       console.log('not logged in')
+    //     }
+    //   })
+    // }
+  };
+
+  _onchange = phone => {
+    this.setState({
+      phone
+    });
+  };
+
+  render() {
     return (
       <View style={styles.container}>
         <View style={{ padding: 40 }}>
@@ -108,8 +62,6 @@ class verifyPhone extends Component {
         </Text>
 
         <View style={{ alignContent: "center", width: "60%" }}>
-          {/* <Dropdown itemCount={4} data={data} /> */}
-
           <TextField
             prefix="+92"
             style={{ width: 700 }}
@@ -117,20 +69,20 @@ class verifyPhone extends Component {
             inputContainerPadding={12}
             tintColor="#25D366"
             label="Phone number"
-            onChangeText={phone => this.setState({ phone })}
+            onChangeText={phone => this._onchange(phone)}
           />
         </View>
 
-        <View style={{position: 'absolute', bottom: 55}}>
-          <Button 
-          large
-          title="Next" 
-          backgroundColor="#25D366" 
-          containerViewStyle={{width: 100}}
-          borderRadius={2} 
+        <View style={{ position: "absolute", bottom: 55 }}>
+          <Button
+            large
+            title="Next"
+            onPress={this._verifyPhone}
+            backgroundColor="#25D366"
+            containerViewStyle={{ width: 100 }}
+            borderRadius={2}
           />
         </View>
-
       </View>
     );
   }
